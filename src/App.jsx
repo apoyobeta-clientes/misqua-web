@@ -1,7 +1,7 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Philosophy } from "./components/Philosophy";
-import { BentoGallery } from "./components/BentoGallery";
+import { Gallery } from "./components/Gallery";
 import { Testimonials } from "./components/Testimonials";
 import { OrderForm } from "./components/OrderForm";
 import { Footer } from "./components/Footer";
@@ -13,7 +13,7 @@ function App() {
       <Navbar />
       <Hero />
       <Philosophy />
-      <BentoGallery />
+      <Gallery />
       <Testimonials />
       <OrderForm />
       <Footer />

@@ -55,11 +55,11 @@ export function Hero() {
       >
         {/* Backdrop mesh gradient blur for ethereal feel */}
         <div className="absolute inset-0 bg-brand-purple opacity-20 blur-[100px] rounded-full translate-y-20 scale-90" />
-        <DoubleBezel className="aspect-[4/5] md:aspect-[3/4] md:h-[80vh] w-full max-w-[600px] mx-auto" innerClassName="bg-brand-purple-dark relative">
+        <DoubleBezel className="aspect-[4/5] md:aspect-auto md:h-[80vh] w-full max-w-[600px] mx-auto flex items-center justify-center" innerClassName="bg-brand-purple-dark relative flex items-center justify-center p-6 md:p-10">
           <img
             src="/assets/hero-candle.jpg"
-            alt="Vela Misqua Artesanal"
-            className="h-full w-full object-cover opacity-90 object-center mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000"
+            alt="Vela Misqua Artesanal, arte en cera de soya"
+            className="max-h-full w-auto object-contain opacity-95 mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000"
           />
         </DoubleBezel>
       </motion.div>
