@@ -23,6 +23,9 @@ export function Footer() {
         <div className="w-full border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/40">
           <span>© 2026 MISQUA Candles</span>
           <img src="/assets/MISQUA.png" alt="Misqua Logo" className="h-10 opacity-40 invert brightness-200 contrast-200" />
+          <a href="mailto:productsmisqua@gmail.com" className="hover:text-white/70 transition-colors">
+            productsmisqua@gmail.com
+          </a>
           <span>Made in Portland, OR</span>
         </div>
       </div>

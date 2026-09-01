@@ -35,17 +35,23 @@ export function Navbar() {
               <X size={32} />
             </button>
             <div className="flex flex-col items-center gap-8 text-center">
-              {['Inicio', 'Filosofía', 'Colección', 'Contacto'].map((item, i) => (
-                <motion.a 
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+              {[
+                { label: 'Inicio', href: '#inicio' },
+                { label: 'Filosofía', href: '#filosofía' },
+                { label: 'Colección', href: '#colección' },
+                { label: 'Pedido', href: '#pedido' },
+                { label: 'Contacto', href: '#contacto' },
+              ].map((item, i) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
                   onClick={() => setIsOpen(false)}
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.1, duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
                   className="font-serif text-5xl md:text-7xl font-light text-brand-dark hover:text-brand-gold transition-colors"
                 >
-                  {item}
+                  {item.label}
                 </motion.a>
               ))}
             </div>
