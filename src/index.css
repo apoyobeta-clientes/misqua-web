@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Geist:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #3D2B56;
+  --color-brand-purple-dark: #2A1D3D;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #EAD086;
+  --color-brand-light: #FDFBF7;
+  --color-brand-dark: #0F0A15;
+  --color-brand-gray: #8A8593;
+
+  --font-sans: 'Geist', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-light text-brand-dark font-sans antialiased;
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+  
+  ::selection {
+    @apply bg-brand-gold text-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
