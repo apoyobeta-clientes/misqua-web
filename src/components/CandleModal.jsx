@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, CaretLeft, CaretRight, PaperPlaneTilt } from "@phosphor-icons/react";
+import { X, CaretLeft, CaretRight, PaperPlaneTilt, ShoppingCartSimple } from "@phosphor-icons/react";
+import { useCart } from "../context/CartContext";
 
 export function CandleModal({ candle, onClose }) {
   const [active, setActive] = useState(0);
+  const { addItem } = useCart();
 
   useEffect(() => {
     setActive(0);
@@ -108,14 +110,23 @@ export function CandleModal({ candle, onClose }) {
                 {candle.description}
               </p>
 
-              <a
-                href={`#pedido`}
-                onClick={onClose}
-                className="mt-auto pt-8 inline-flex items-center gap-3 self-start rounded-full bg-brand-purple px-6 py-3 text-sm font-medium text-white hover:bg-brand-purple-dark transition-colors"
-              >
-                Pedir {candle.title}
-                <PaperPlaneTilt weight="bold" size={16} />
-              </a>
+              <div className="mt-auto pt-8 flex flex-wrap gap-3">
+                <button
+                  onClick={() => addItem(candle)}
+                  className="inline-flex items-center gap-3 rounded-full bg-brand-purple px-6 py-3 text-sm font-medium text-white hover:bg-brand-purple-dark transition-colors"
+                >
+                  Añadir a mi selección
+                  <ShoppingCartSimple weight="bold" size={16} />
+                </button>
+                <a
+                  href="#pedido"
+                  onClick={onClose}
+                  className="inline-flex items-center gap-3 rounded-full ring-1 ring-black/10 px-6 py-3 text-sm font-medium text-brand-dark hover:bg-black/5 transition-colors"
+                >
+                  Pedir ahora
+                  <PaperPlaneTilt weight="bold" size={16} />
+                </a>
+              </div>
             </div>
           </motion.div>
         </motion.div>

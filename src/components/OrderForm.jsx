@@ -1,13 +1,30 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { PaperPlaneTilt } from "@phosphor-icons/react";
+import { PaperPlaneTilt, Trash } from "@phosphor-icons/react";
 import { MagneticButton } from "./MagneticButton";
+import { useCart } from "../context/CartContext";
 
 const ORDER_EMAIL = "productsmisqua@gmail.com";
+
+function cartToText(items) {
+  return items.map((i) => `${i.qty} x ${i.title}`).join(", ");
+}
 
 export function OrderForm() {
   const reduce = useReducedMotion();
   const [status, setStatus] = useState("idle");
+  const { items, removeItem, updateQty, clear } = useCart();
+  const [producto, setProducto] = useState("");
+  const lastAuto = useRef("");
+
+  useEffect(() => {
+    const auto = cartToText(items);
+    if (producto === "" || producto === lastAuto.current) {
+      setProducto(auto);
+      lastAuto.current = auto;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +39,9 @@ export function OrderForm() {
       if (res.ok) {
         setStatus("sent");
         form.reset();
+        setProducto("");
+        lastAuto.current = "";
+        clear();
       } else {
         setStatus("error");
       }
@@ -40,6 +60,54 @@ export function OrderForm() {
           <p className="mt-6 text-lg font-light text-brand-gray max-w-[42ch] leading-relaxed">
             Cuéntanos qué vela quieres y para cuándo la necesitas. Te respondemos por correo a {ORDER_EMAIL} para confirmar detalles y pago.
           </p>
+
+          {items.length > 0 && (
+            <div className="mt-10 rounded-2xl bg-white ring-1 ring-black/5 p-5">
+              <p className="text-xs font-mono uppercase tracking-[0.15em] text-brand-gray mb-4">
+                Resumen de tu selección
+              </p>
+              <ul className="flex flex-col gap-4">
+                {items.map((item) => (
+                  <li key={item.id} className="flex items-center gap-3">
+                    <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-[#F4F1EA] ring-1 ring-black/5">
+                      <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-brand-dark">{item.title}</p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <button
+                          type="button"
+                          onClick={() => updateQty(item.id, item.qty - 1)}
+                          className="text-xs text-brand-gray hover:text-brand-dark"
+                        >
+                          -
+                        </button>
+                        <span className="text-xs text-brand-dark">{item.qty}</span>
+                        <button
+                          type="button"
+                          onClick={() => updateQty(item.id, item.qty + 1)}
+                          className="text-xs text-brand-gray hover:text-brand-dark"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => removeItem(item.id)}
+                      aria-label={`Quitar ${item.title}`}
+                      className="text-brand-gray hover:text-red-600 transition-colors"
+                    >
+                      <Trash size={16} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs text-brand-gray">
+                Sin cobro en línea todavía: confirmamos precio y forma de pago contigo antes de producir tu pedido.
+              </p>
+            </div>
+          )}
         </div>
 
         <motion.form
@@ -94,6 +162,8 @@ export function OrderForm() {
               name="Producto"
               type="text"
               required
+              value={producto}
+              onChange={(e) => setProducto(e.target.value)}
               placeholder="Ej. 2 velas Colombiana Mango, 10oz"
               className="rounded-xl border border-black/10 bg-white px-4 py-3 text-brand-dark placeholder:text-brand-gray/60 outline-none focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 transition-colors"
             />

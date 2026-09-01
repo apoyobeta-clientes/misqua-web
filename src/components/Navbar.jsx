@@ -1,17 +1,31 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { List, X } from "@phosphor-icons/react";
+import { List, X, ShoppingCartSimple } from "@phosphor-icons/react";
+import { useCart } from "../context/CartContext";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { count, setIsOpen: setCartOpen } = useCart();
 
   return (
     <>
       <header className="fixed top-6 left-1/2 z-50 -translate-x-1/2">
-        <nav className="flex items-center gap-12 rounded-full bg-white/70 backdrop-blur-xl pl-8 pr-3 py-2 ring-1 ring-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
+        <nav className="flex items-center gap-6 rounded-full bg-white/70 backdrop-blur-xl pl-8 pr-3 py-2 ring-1 ring-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
           <span className="font-serif text-xl font-medium tracking-[0.15em] text-brand-purple">MISQUA</span>
-          <button 
-            onClick={() => setIsOpen(true)} 
+          <button
+            onClick={() => setCartOpen(true)}
+            aria-label="Ver mi selección"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-brand-dark hover:bg-black/10 transition-colors"
+          >
+            <ShoppingCartSimple size={18} weight="bold" />
+            {count > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-gold px-1 text-[11px] font-medium text-brand-dark">
+                {count}
+              </span>
+            )}
+          </button>
+          <button
+            onClick={() => setIsOpen(true)}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-purple text-white hover:bg-brand-purple-dark transition-colors"
           >
             <List size={20} />
