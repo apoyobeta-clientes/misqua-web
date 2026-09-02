@@ -12,7 +12,7 @@ export function CartProvider({ children }) {
       if (existing) {
         return prev.map((i) => (i.id === candle.id ? { ...i, qty: i.qty + 1 } : i));
       }
-      return [...prev, { id: candle.id, title: candle.title, image: candle.images[0], qty: 1 }];
+      return [...prev, { id: candle.id, title: candle.title, image: candle.images[0], price: candle.price, qty: 1 }];
     });
     setIsOpen(true);
   };
@@ -27,8 +27,9 @@ export function CartProvider({ children }) {
   const clear = () => setItems([]);
 
   const count = useMemo(() => items.reduce((sum, i) => sum + i.qty, 0), [items]);
+  const total = useMemo(() => items.reduce((sum, i) => sum + i.price * i.qty, 0), [items]);
 
-  const value = { items, addItem, removeItem, updateQty, clear, count, isOpen, setIsOpen };
+  const value = { items, addItem, removeItem, updateQty, clear, count, total, isOpen, setIsOpen };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

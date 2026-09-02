@@ -22,16 +22,16 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
           className="text-6xl md:text-7xl lg:text-[7.5rem] font-serif leading-[0.9] tracking-tight text-brand-dark text-balance"
         >
-          Transita con los sentidos.
+          Tu personalidad, hecha arte en cera.
         </motion.h1>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
           className="max-w-[40ch] text-lg text-brand-gray font-light"
         >
-          Velas artesanales inspiradas en viajes, cultura y naturaleza. Detalles que convierten lo cotidiano en mágico.
+          No vendemos velas aromáticas. Vertimos tu esencia en cada pieza: la imaginas, nosotros la hacemos realidad.
         </motion.p>
         
         <motion.div
@@ -57,8 +57,8 @@ export function Hero() {
         <div className="absolute inset-0 bg-brand-purple opacity-20 blur-[100px] rounded-full translate-y-20 scale-90" />
         <DoubleBezel className="aspect-[4/5] md:aspect-auto md:h-[80vh] w-full max-w-[600px] mx-auto flex items-center justify-center" innerClassName="bg-brand-purple-dark relative flex items-center justify-center p-6 md:p-10">
           <img
-            src="/assets/hero-candle.jpg"
-            alt="Vela Misqua Artesanal, arte en cera de soya"
+            src="/assets/hero-flower.jpg"
+            alt="Vela Misqua con forma de flor, arte artesanal en cera de soya"
             className="max-h-full w-auto object-contain opacity-95 mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000"
           />
         </DoubleBezel>

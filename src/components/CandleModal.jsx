@@ -90,10 +90,20 @@ export function CandleModal({ candle, onClose }) {
             </div>
 
             <div className="p-8 md:p-10 flex flex-col">
-              <span className="font-mono text-xs text-brand-gold">No. {candle.no}</span>
-              <h3 className="mt-2 text-3xl md:text-4xl font-serif text-brand-dark leading-tight">
-                {candle.title}
-              </h3>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-xs text-brand-gold">No. {candle.no}</span>
+                {candle.special && (
+                  <span className="rounded-full bg-brand-gold/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-brand-gold">
+                    Colección Especial
+                  </span>
+                )}
+              </div>
+              <div className="mt-2 flex items-baseline justify-between gap-4">
+                <h3 className="text-3xl md:text-4xl font-serif text-brand-dark leading-tight">
+                  {candle.title}
+                </h3>
+                <span className="font-serif text-2xl text-brand-purple shrink-0">${candle.price}</span>
+              </div>
 
               <dl className="mt-6 grid grid-cols-2 gap-4 text-sm border-t border-black/10 pt-6">
                 <div>

@@ -14,7 +14,7 @@ export function Philosophy() {
             transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
             className="text-5xl md:text-6xl lg:text-[6rem] font-serif leading-[1.1] tracking-tight text-brand-dark"
           >
-            Luz, energía<br />y transformación.
+            No es el aroma.<br />Eres tú, en cera.
           </motion.h2>
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -23,7 +23,7 @@ export function Philosophy() {
             transition={{ duration: 1, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
             className="mt-8 text-lg font-light text-brand-gray max-w-[45ch] leading-relaxed"
           >
-            MISQUA es más que velas. Es un viaje de aromas que te transporta a lugares, recuerdos y emociones. Inspiradas en la naturaleza y la diversidad cultural, cada vela es vertida a mano para convertir lo cotidiano en mágico.
+            El concepto de MISQUA no es vender velas aromáticas. Es que cada vela refleje tu personalidad: el color, la forma, el mensaje y el aroma se eligen o se personalizan para contar quién eres. Vertida a mano, pieza por pieza.
           </motion.p>
         </div>
         <div className="md:col-span-5">

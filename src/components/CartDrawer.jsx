@@ -3,7 +3,7 @@ import { X, Minus, Plus, Trash, ShoppingCartSimple } from "@phosphor-icons/react
 import { useCart } from "../context/CartContext";
 
 export function CartDrawer() {
-  const { items, removeItem, updateQty, isOpen, setIsOpen, count } = useCart();
+  const { items, removeItem, updateQty, isOpen, setIsOpen, count, total } = useCart();
 
   return (
     <AnimatePresence>
@@ -51,7 +51,10 @@ export function CartDrawer() {
                         <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
                       </div>
                       <div className="flex-1">
-                        <p className="font-serif text-lg text-brand-dark leading-tight">{item.title}</p>
+                        <div className="flex items-baseline justify-between gap-3">
+                          <p className="font-serif text-lg text-brand-dark leading-tight">{item.title}</p>
+                          <span className="font-serif text-base text-brand-purple shrink-0">${item.price}</span>
+                        </div>
                         <div className="mt-2 flex items-center gap-3">
                           <button
                             onClick={() => updateQty(item.id, item.qty - 1)}
@@ -85,8 +88,14 @@ export function CartDrawer() {
 
             {items.length > 0 && (
               <div className="px-6 py-6 border-t border-black/10 space-y-3">
+                <div className="flex items-baseline justify-between">
+                  <p className="text-sm text-brand-gray">
+                    {count} {count === 1 ? "vela seleccionada" : "velas seleccionadas"}
+                  </p>
+                  <p className="font-serif text-xl text-brand-dark">${total}</p>
+                </div>
                 <p className="text-sm text-brand-gray">
-                  {count} {count === 1 ? "vela seleccionada" : "velas seleccionadas"}. Sin cobro en línea: confirmamos precio y pago contigo por correo o WhatsApp.
+                  Sin cobro en línea: confirmamos el pago contigo por correo o WhatsApp.
                 </p>
                 <a
                   href="#pedido"

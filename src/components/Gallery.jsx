@@ -8,17 +8,22 @@ export function Gallery() {
   const [filter, setFilter] = useState("todas");
   const [selected, setSelected] = useState(null);
 
-  const visible = filter === "todas" ? candles : candles.filter((c) => c.category === filter);
+  const visible =
+    filter === "todas"
+      ? candles
+      : filter === "especial"
+        ? candles.filter((c) => c.special)
+        : candles.filter((c) => c.category === filter);
 
   return (
     <section id="colección" className="w-full px-4 py-32 md:px-8 lg:px-12 bg-white">
       <div className="max-w-[1600px] mx-auto">
         <div className="mb-12 max-w-[52ch]">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif text-brand-dark leading-tight">
-            Cada vela, una pieza.
+            Elige la que se parece a ti.
           </h2>
           <p className="mt-6 text-lg font-light text-brand-gray leading-relaxed">
-            Vertidas, marmoleadas y decoradas a mano una por una. Estas fotos no están recortadas: así se ven las velas de verdad. Toca una pieza para ver más fotos y su descripción.
+            Cada pieza se vierte, marmolea y decora a mano una por una, y se puede personalizar en color, forma o mensaje. Estas fotos no están recortadas: así se ven las velas de verdad. Toca una pieza para ver más fotos y su descripción.
           </p>
         </div>
 
@@ -64,9 +69,17 @@ export function Gallery() {
               <span className="mt-4 flex items-baseline gap-3">
                 <span className="font-mono text-xs text-brand-gold shrink-0">No. {piece.no}</span>
                 <span>
-                  <span className="block font-serif text-xl text-brand-dark leading-tight">{piece.title}</span>
+                  <span className="flex items-center gap-2">
+                    <span className="font-serif text-xl text-brand-dark leading-tight">{piece.title}</span>
+                    {piece.special && (
+                      <span className="rounded-full bg-brand-gold/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-brand-gold">
+                        Especial
+                      </span>
+                    )}
+                  </span>
                   <span className="block text-sm text-brand-gray mt-1">{piece.note}</span>
                 </span>
+                <span className="ml-auto font-serif text-lg text-brand-purple shrink-0">${piece.price}</span>
               </span>
             </motion.button>
           ))}
