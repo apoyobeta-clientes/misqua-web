@@ -59,7 +59,7 @@ export function Hero() {
           <img
             src="/assets/hero-flower.jpg"
             alt="Vela Misqua con forma de flor, arte artesanal en cera de soya"
-            className="max-h-full w-auto object-contain opacity-95 mix-blend-luminosity [@media(hover:hover)]:hover:mix-blend-normal transition-all duration-1000"
+            className="max-h-full w-auto object-contain opacity-95 mix-blend-normal [@media(hover:hover)]:mix-blend-luminosity [@media(hover:hover)]:hover:mix-blend-normal transition-all duration-1000"
           />
         </DoubleBezel>
       </motion.div>
