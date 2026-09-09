@@ -51,12 +51,19 @@ export function CandleModal({ candle, onClose }) {
               <X size={20} />
             </button>
 
-            <div className="relative bg-[#F4F1EA] flex items-center justify-center p-6 md:p-10 min-h-[320px]">
-              <img
+            <div className="relative bg-[#F4F1EA] flex items-center justify-center p-6 md:p-10 min-h-[320px] touch-pan-y overflow-hidden">
+              <motion.img
                 key={candle.images[active]}
                 src={candle.images[active]}
                 alt={`${candle.title}, foto ${active + 1} de ${candle.images.length}`}
-                className="max-h-[50dvh] md:max-h-[70dvh] w-auto object-contain rounded-xl"
+                className="max-h-[50dvh] md:max-h-[70dvh] w-auto object-contain rounded-xl select-none"
+                drag={candle.images.length > 1 ? "x" : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.6}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x < -60) next();
+                  else if (info.offset.x > 60) prev();
+                }}
               />
 
               {candle.images.length > 1 && (
@@ -64,16 +71,16 @@ export function CandleModal({ candle, onClose }) {
                   <button
                     onClick={prev}
                     aria-label="Foto anterior"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-brand-dark hover:bg-white transition-colors ring-1 ring-black/5"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-brand-dark hover:bg-white transition-colors ring-1 ring-black/5"
                   >
-                    <CaretLeft size={18} weight="bold" />
+                    <CaretLeft size={20} weight="bold" />
                   </button>
                   <button
                     onClick={next}
                     aria-label="Foto siguiente"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-brand-dark hover:bg-white transition-colors ring-1 ring-black/5"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-brand-dark hover:bg-white transition-colors ring-1 ring-black/5"
                   >
-                    <CaretRight size={18} weight="bold" />
+                    <CaretRight size={20} weight="bold" />
                   </button>
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                     {candle.images.map((_, i) => (
@@ -85,6 +92,9 @@ export function CandleModal({ candle, onClose }) {
                       />
                     ))}
                   </div>
+                  <span className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-brand-dark ring-1 ring-black/5">
+                    {active + 1} / {candle.images.length}
+                  </span>
                 </>
               )}
             </div>

@@ -58,11 +58,11 @@ export function Gallery() {
                   />
                 </div>
                 {piece.images.length > 1 && (
-                  <span className="absolute bottom-4 left-4 flex h-9 items-center rounded-full bg-white/90 px-3 text-brand-dark text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity ring-1 ring-black/5">
+                  <span className="absolute bottom-4 left-4 flex h-9 items-center rounded-full bg-white/90 px-3 text-brand-dark text-xs font-medium ring-1 ring-black/5">
                     +{piece.images.length - 1} fotos
                   </span>
                 )}
-                <span className="absolute -top-3 -right-3 flex h-16 w-16 items-center justify-center rounded-full bg-brand-purple text-white shadow-lg ring-4 ring-white transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-125">
+                <span className="absolute -bottom-3 -right-3 flex h-16 w-16 items-center justify-center rounded-full bg-brand-purple text-white shadow-lg ring-4 ring-white transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-125">
                   <span className="font-serif text-lg font-bold leading-none">${piece.price}</span>
                 </span>
               </div>
