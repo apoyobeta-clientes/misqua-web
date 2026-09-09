@@ -38,7 +38,7 @@ export function Gallery() {
           ))}
         </div>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 md:gap-8 [column-fill:_balance]">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-6 md:gap-8 [column-fill:_balance]">
           {visible.map((piece, i) => (
             <motion.button
               key={piece.id}
@@ -47,7 +47,7 @@ export function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.8, delay: (i % 3) * 0.08, ease: [0.32, 0.72, 0, 1] }}
-              className="mb-6 md:mb-8 block w-full text-left break-inside-avoid group"
+              className="mb-4 sm:mb-6 md:mb-8 block w-full text-left break-inside-avoid group"
             >
               <div className="p-1.5 ring-1 ring-black/5 bg-[#F4F1EA] rounded-[1.5rem] relative">
                 <div className="overflow-hidden rounded-[calc(1.5rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
@@ -66,11 +66,11 @@ export function Gallery() {
                   <span className="font-serif text-lg font-bold leading-none">${piece.price}</span>
                 </span>
               </div>
-              <div className="mt-5">
+              <div className="mt-3 sm:mt-4">
                 <span className="inline-block rounded-full bg-brand-gold/15 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-brand-gold">
                   {piece.tag}
                 </span>
-                <h3 className="mt-2 font-serif text-2xl md:text-3xl text-brand-dark leading-tight">{piece.title}</h3>
+                <h3 className="mt-2 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-brand-dark leading-tight">{piece.title}</h3>
                 <p className="mt-1 text-sm text-brand-gray">{piece.note}</p>
               </div>
             </motion.button>
