@@ -9,27 +9,28 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed top-6 left-1/2 z-50 -translate-x-1/2">
-        <nav className="flex items-center gap-6 rounded-full bg-white/70 backdrop-blur-xl pl-8 pr-3 py-2 ring-1 ring-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
-          <span className="font-serif text-xl font-medium tracking-[0.15em] text-brand-purple">MISQUA</span>
+      <header className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-full max-w-2xl px-4">
+        <nav className="flex items-center gap-4 rounded-full bg-white/80 backdrop-blur-xl pl-6 pr-3 py-2.5 ring-1 ring-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.06)]">
+          <span className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.1em] text-brand-purple">MISQUA</span>
           <button
             onClick={() => setCartOpen(true)}
             aria-label="Ver mi selección"
-            className="relative flex h-12 items-center gap-2 rounded-full bg-brand-purple/10 px-4 text-brand-purple hover:bg-brand-purple/15 transition-colors"
+            className="relative ml-auto flex h-14 items-center gap-2 rounded-full bg-brand-purple/10 px-5 text-brand-purple hover:bg-brand-purple/15 transition-colors"
           >
-            <ShoppingCartSimple size={22} weight="bold" />
-            <span className="hidden sm:inline text-sm font-semibold">Mi selección</span>
+            <ShoppingCartSimple size={24} weight="bold" />
+            <span className="hidden sm:inline text-base font-semibold">Mi selección</span>
             {count > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 flex h-6 min-w-6 items-center justify-center rounded-full bg-brand-gold px-1.5 text-xs font-bold text-brand-dark ring-2 ring-white">
+              <span className="absolute -top-2 -right-2 flex h-7 min-w-7 items-center justify-center rounded-full bg-brand-gold px-1.5 text-sm font-bold text-brand-dark ring-2 ring-white">
                 {count}
               </span>
             )}
           </button>
           <button
             onClick={() => setIsOpen(true)}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-purple text-white hover:bg-brand-purple-dark transition-colors"
+            aria-label="Abrir menú"
+            className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-purple text-white hover:bg-brand-purple-dark transition-colors"
           >
-            <List size={20} />
+            <List size={24} />
           </button>
         </nav>
       </header>

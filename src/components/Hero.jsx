@@ -20,7 +20,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-          className="text-6xl md:text-7xl lg:text-[7.5rem] font-serif leading-[0.9] tracking-tight text-brand-dark text-balance"
+          className="text-6xl md:text-7xl lg:text-[7.5rem] font-serif leading-[1.08] tracking-tight text-brand-dark text-balance"
         >
           Tu personalidad, hecha arte en cera.
         </motion.h1>
