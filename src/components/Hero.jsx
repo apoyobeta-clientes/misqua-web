@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { MagneticButton } from "./MagneticButton";
 import { DoubleBezel } from "./DoubleBezel";
-import { ArrowRight } from "@phosphor-icons/react";
+import { ArrowRight, Clock } from "@phosphor-icons/react";
 
 export function Hero() {
   return (
@@ -44,6 +44,10 @@ export function Hero() {
               Descubre la colección
             </MagneticButton>
           </a>
+          <p className="mt-4 flex items-center gap-2 text-sm text-brand-gray">
+            <Clock size={16} weight="bold" className="text-brand-gold" />
+            Entrega en 3 a 5 días hábiles, hecha a mano por pedido.
+          </p>
         </motion.div>
       </div>
 
@@ -57,8 +61,8 @@ export function Hero() {
         <div className="absolute inset-0 bg-brand-purple opacity-20 blur-[100px] rounded-full translate-y-20 scale-90" />
         <DoubleBezel className="aspect-[4/5] md:aspect-auto md:h-[80vh] w-full max-w-[600px] mx-auto flex items-center justify-center" innerClassName="bg-brand-purple-dark relative flex items-center justify-center p-6 md:p-10">
           <img
-            src="/assets/hero-flower.jpg"
-            alt="Vela Misqua con forma de flor, arte artesanal en cera de soya"
+            src="/assets/hero-cover.jpg"
+            alt="Vela Misqua Colombiana Mango en jarra de vidrio, arte artesanal en cera de soya"
             className="max-h-full w-auto object-contain opacity-95 mix-blend-normal [@media(hover:hover)]:mix-blend-luminosity [@media(hover:hover)]:hover:mix-blend-normal transition-all duration-1000"
           />
         </DoubleBezel>

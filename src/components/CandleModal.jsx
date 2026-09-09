@@ -102,7 +102,7 @@ export function CandleModal({ candle, onClose }) {
                 <h3 className="text-3xl md:text-4xl font-serif text-brand-dark leading-tight">
                   {candle.title}
                 </h3>
-                <span className="font-serif text-2xl text-brand-purple shrink-0">${candle.price}</span>
+                <span className="font-serif text-4xl font-semibold text-brand-purple shrink-0">${candle.price}</span>
               </div>
 
               <dl className="mt-6 grid grid-cols-2 gap-4 text-sm border-t border-black/10 pt-6">

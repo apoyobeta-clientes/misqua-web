@@ -15,11 +15,12 @@ export function Navbar() {
           <button
             onClick={() => setCartOpen(true)}
             aria-label="Ver mi selección"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-black/5 text-brand-dark hover:bg-black/10 transition-colors"
+            className="relative flex h-12 items-center gap-2 rounded-full bg-brand-purple/10 px-4 text-brand-purple hover:bg-brand-purple/15 transition-colors"
           >
-            <ShoppingCartSimple size={18} weight="bold" />
+            <ShoppingCartSimple size={22} weight="bold" />
+            <span className="hidden sm:inline text-sm font-semibold">Mi selección</span>
             {count > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-gold px-1 text-[11px] font-medium text-brand-dark">
+              <span className="absolute -top-1.5 -right-1.5 flex h-6 min-w-6 items-center justify-center rounded-full bg-brand-gold px-1.5 text-xs font-bold text-brand-dark ring-2 ring-white">
                 {count}
               </span>
             )}

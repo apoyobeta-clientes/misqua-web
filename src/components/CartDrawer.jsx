@@ -1,9 +1,17 @@
 import { motion, AnimatePresence } from "motion/react";
-import { X, Minus, Plus, Trash, ShoppingCartSimple } from "@phosphor-icons/react";
+import { X, Minus, Plus, Trash, ShoppingCartSimple, WhatsappLogo } from "@phosphor-icons/react";
 import { useCart } from "../context/CartContext";
+
+const WHATSAPP_NUMBER = "13603280435";
 
 export function CartDrawer() {
   const { items, removeItem, updateQty, isOpen, setIsOpen, count, total } = useCart();
+
+  const whatsappHref = (() => {
+    const lines = items.map((i) => `${i.qty} x ${i.title} ($${i.price} c/u)`).join("\n");
+    const message = `Hola Misqua, quiero pedir:\n${lines}\n\nTotal: $${total}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  })();
 
   return (
     <AnimatePresence>
@@ -53,7 +61,7 @@ export function CartDrawer() {
                       <div className="flex-1">
                         <div className="flex items-baseline justify-between gap-3">
                           <p className="font-serif text-lg text-brand-dark leading-tight">{item.title}</p>
-                          <span className="font-serif text-base text-brand-purple shrink-0">${item.price}</span>
+                          <span className="font-serif text-2xl font-semibold text-brand-purple shrink-0">${item.price}</span>
                         </div>
                         <div className="mt-2 flex items-center gap-3">
                           <button
@@ -92,17 +100,27 @@ export function CartDrawer() {
                   <p className="text-sm text-brand-gray">
                     {count} {count === 1 ? "vela seleccionada" : "velas seleccionadas"}
                   </p>
-                  <p className="font-serif text-xl text-brand-dark">${total}</p>
+                  <p className="font-serif text-3xl font-semibold text-brand-dark">${total}</p>
                 </div>
                 <p className="text-sm text-brand-gray">
                   Sin cobro en línea: confirmamos el pago contigo por correo o WhatsApp.
                 </p>
                 <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-medium text-white hover:brightness-95 transition-[filter]"
+                >
+                  <WhatsappLogo weight="fill" size={18} />
+                  Pedir ya por WhatsApp
+                </a>
+                <a
                   href="#pedido"
                   onClick={() => setIsOpen(false)}
-                  className="flex w-full items-center justify-center rounded-full bg-brand-purple px-6 py-3 text-sm font-medium text-white hover:bg-brand-purple-dark transition-colors"
+                  className="flex w-full items-center justify-center rounded-full ring-1 ring-black/10 px-6 py-3 text-sm font-medium text-brand-dark hover:bg-black/5 transition-colors"
                 >
-                  Finalizar pedido
+                  O completar formulario de pedido
                 </a>
               </div>
             )}

@@ -79,7 +79,7 @@ export function Gallery() {
                   </span>
                   <span className="block text-sm text-brand-gray mt-1">{piece.note}</span>
                 </span>
-                <span className="ml-auto font-serif text-lg text-brand-purple shrink-0">${piece.price}</span>
+                <span className="ml-auto font-serif text-3xl font-semibold text-brand-purple shrink-0">${piece.price}</span>
               </span>
             </motion.button>
           ))}
